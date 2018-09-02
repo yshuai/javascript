@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1></h1>
+    </div>
+    <div id="content">
+        <h2>今天天气</h2>
+        <ul>
+            <li>湿度:</li>
+            <li>穿衣指数:</li>
+            <li>洗车指数:</li>
+            <li>旅行指数:</li>
+            <li>锻炼指数:</li>
+            <li>紫外线指数:</li>
+        </ul>
+    </div>
+    <div>
+        <p>未来6天天气</p>
+    </div>
+    <script>
+        function success(text){
+            var li = document.getElementById("content").getElementsByTagName("li");
+            li[0].value = text;
+        }
+        function fail(code){
+            var li = document.getElementById("content").getElementsByTagName("li");
+            li[0].value = "Error code: "+code;
+        }
+        var request = new XMLHttpRequest();
+        if (request.reqdyState ===4){
+            if (request.status ===200){
+                return success(reques.responseText);
+            }else{
+                return fail(request.status);
+            }
+        }else{
+
+        }
+
+        //发送请求:
+        request.open("GET","http://v.juhe.cn/weather/index?format=2&cityname=%E8%8B%8F%E5%B7%9E&key=bcadaf57899f20f8a3074a57b2053d01");
+        request.send();
+    </script>
+</body>
+</html>
